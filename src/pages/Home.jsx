@@ -5,17 +5,6 @@ export default function Home() {
   const neonText = "text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-400 drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]";
   const glassEffect = "bg-white/[0.02] backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.2)]";
 
-  const techSkills = [
-    { name: 'Node.js', level: 99 },
-    { name: 'Hono.js', level: 93 },
-    { name: 'Express.js', level: 89 },
-    { name: 'React', level: 83 },
-    { name: 'TypeScript', level: 83 },
-    { name: 'Vite', level: 79 },
-    { name: 'Python', level: 67 },
-    { name: 'Kotlin', level: 43 },
-  ];
-
   const focusAreas = [
     {
       title: "Web Modern",
@@ -42,8 +31,6 @@ export default function Home() {
       )
     }
   ];
-
-  const circleCircumference = 251.3;
 
   return (
     <motion.div
@@ -93,7 +80,7 @@ export default function Home() {
             </p>            
           </div>
           
-          <div className="grid grid-cols-3 gap-2 md:gap-4 mb-12 relative z-10 w-full max-w-3xl mx-auto">
+          <div className="grid grid-cols-3 gap-2 md:gap-4 relative z-10 w-full max-w-3xl mx-auto">
             {focusAreas.map((area, index) => (
               <motion.div
                 key={index}
@@ -112,52 +99,6 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent my-12 relative z-10"></div>
-          
-          <div className="relative z-10">
-            <h3 className="text-2xl font-bold text-center text-white mb-10 drop-shadow-sm tracking-wide">
-              Tech Stack Proficiency
-            </h3>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 justify-items-center">
-              {techSkills.map((skill, index) => {
-                const strokeDashoffset = circleCircumference - (circleCircumference * skill.level) / 100;
-
-                return (
-                  <div key={skill.name} className="flex flex-col items-center group">
-                    <div className="relative w-24 h-24 mb-4 drop-shadow-[0_0_10px_rgba(34,211,238,0.2)] group-hover:drop-shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all duration-500">
-                      
-                      <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-                        <defs>
-                          <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="#22d3ee" />
-                            <stop offset="100%" stopColor="#a855f7" />
-                          </linearGradient>
-                        </defs>
-                        <circle cx="50" cy="50" r="40" strokeWidth="8" stroke="currentColor" fill="none" className="text-white/5" />
-                        <motion.circle
-                          cx="50" cy="50" r="40" strokeWidth="8" stroke="url(#neonGradient)" fill="none" strokeLinecap="round"
-                          initial={{ strokeDasharray: circleCircumference, strokeDashoffset: circleCircumference }}
-                          whileInView={{ strokeDashoffset: strokeDashoffset }}
-                          transition={{ duration: 1.5, ease: "easeOut", delay: index * 0.1 }}
-                          viewport={{ once: true, margin: "-50px" }}
-                        />
-                      </svg>
-                      
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-lg font-bold text-white tracking-wide">
-                          {skill.level}<span className="text-sm text-cyan-300">%</span>
-                        </span>
-                      </div>
-                    </div>
-                    <span className="text-sm md:text-base font-semibold text-gray-300 group-hover:text-white transition-colors tracking-wide">
-                      {skill.name}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
         </motion.div>
       </main>
     </motion.div>
